@@ -1,9 +1,13 @@
+package app;
 import br.com.dio.desafio.dominio.Bootcamp;
 import br.com.dio.desafio.dominio.Curso;
 import br.com.dio.desafio.dominio.Dev;
+import br.com.dio.desafio.dominio.EmpresaTreinamento;
 import br.com.dio.desafio.dominio.Mentoria;
 
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class Main {
     public static void main(String[] args) {
@@ -32,6 +36,9 @@ public class Main {
         bootcamp.getConteudos().add(curso1);
         bootcamp.getConteudos().add(curso2);
         bootcamp.getConteudos().add(mentoria);
+        
+    	EmpresaTreinamento empresa = new EmpresaTreinamento("Dio");
+    	empresa.setBootcamps(Arrays.asList(bootcamp));
 
         Dev devCamila = new Dev();
         devCamila.setNome("Camila");
@@ -57,7 +64,9 @@ public class Main {
         System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
         System.out.println("Conteúdos Concluidos João:" + devJoao.getConteudosConcluidos());
         System.out.println("XP:" + devJoao.calcularTotalXp());
-
+        
+        empresa.emitirCertificados();
+        System.out.println(empresa.getCertificadosEmitidos());
     }
 
 }
